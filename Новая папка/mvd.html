@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МВД Личные дела бывших сотрудников</title>
+    <link href="mvd.css" rel="stylesheet">
+</head>
+<body>
+    <h2>Форма ввода</h2>
+    <form>
+        <label for="fund_number">Номер фонда:</label>
+        <input id="fund_number" type="number" name="fund_number" value="30" required><br>
+        
+        <label for="inventory_number">Номер описи:</label> <!-- (в js) должны формироваться по порядку автоматически начиная с 1 до 999  -->
+        <input id="inventory_number" type="number" name="inventory_number" required><br>
+
+        <label for="case_number">Номер дела:</label> <!-- (в js) должны формироваться по порядку автоматически начиная с 1 до 999 -->
+        <input id="case_number" type="number" name="case_number" required><br>
+
+        <label for="old_case_number">Номер дела (старый):</label>
+        <input id="old_case_number" type="number" name="old_case_number"><br>
+
+        <label for="box_number">Коробка:</label>
+        <input id="box_number" type="number" name="box_number"><br>
+
+        <label for="last_name">Фамилия:</label>
+        <input type="text" id="last_name" name="last_name" required><br>
+
+        <label for="first_name">Имя:</label>
+        <input type="text" id="first_name" name="first_name" required><br>
+
+        <label for="middle_name">Отчество:</label>
+        <input type="text" id="middle_name" name="middle_name"><br>
+
+        <label for="dob">Дата рождения:</label> <!-- (в js) Полная и не полная дата-->
+        <input type="date" id="dob" name="dob" required><br>
+
+        <label for="birth_place">Место рождения:</label>
+        <input type="text" id="birth_place" name="birth_place" required><br>
+
+        <label for="num_of_pages">Количество листов:</label>
+        <input id="num_of_pages" type="number" name="num_of_pages" required><br>
+
+        <label for="employee_category">Категория сотрудника:</label>
+        <input id="employee_category" type="number" name="employee_category" required>
+        <form id="referenceForm">
+            <label for="newEntry">Добавить новый элемент:</label>
+            <input type="text" id="newEntry" required>
+            <button type="submit">Добавить</button>
+        </form>
+
+        <label for="note">Примечание:</label>
+        <input type="text" id="note" name="note"><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <h2>Форма поиска</h2>
+    <form>
+        <label for="search_query">Поиск:</label>
+        <input type="text" id="search_query" name="search_query">
+        <button type="submit">Найти</button>
+    </form>
+</body>
+</body>
+</html>
