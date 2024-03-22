@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МВД Личные дела бывших сотрудников</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #0057B8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <h2>Форма ввода</h2>
+    <div class="form-container" id="login-form">
+        <label for="fund_number">Номер фонда:</label>
+            <input class="standart" id="fund_number" type="number" name="fund_number" value="30" required><br>
+
+        <label for="inventory_number">Номер описи:</label> <!-- (в js) должны формироваться по порядку автоматически начиная с 1 до 999  -->
+            <input class="standart" id="inventory_number" type="number" name="inventory_number" required><br>
+    
+            <label for="case_number">Номер дела:</label> <!-- (в js) должны формироваться по порядку автоматически начиная с 1 до 999 -->
+            <input class="standart" id="case_number" type="number" name="case_number" required><br>
+    
+            <label for="old_case_number">Номер дела (старый):</label>
+            <input class="standart" id="old_case_number" type="number" name="old_case_number"><br>
+    
+            <label for="box_number">Коробка числовое поле:</label>
+            <input class="standart" id="box_number" type="number" name="box_number"><br>
+
+            <label for="last_name">Фамилия:</label>
+            <input class="standart" type="text" id="last_name" name="last_name" required maxlength="50"><br>
+
+        <label for="username">Имя:</label>
+        <input type="text" id="username" name="username" required maxlength="50">
+
+        <label for="middle_name">Отчество:</label>
+        <input class="standart" type="text" id="middle_name" name="middle_name" maxlength="50"><br>
+
+           <label for="dob"> Дата рождения:</label> <!-- (в js) Полная и не полная дата-->
+            <input class="standart" type="date" id="dob" name="dob" placeholder="ГГГГ или ДД.ММ.ГГГГ" required><br>
+    
+            <label for="birth_place">Место рождения:</label>
+            <input class="standart" type="text" id="birth_place" name="birth_place" required maxlength="150"><br>
+    
+            <label for="num_of_pages">Количество листов:</label>
+            <input class="standart" id="num_of_pages" type="number" name="num_of_pages" required><br>
+    
+            <label for="employee_category">Категория сотрудника:</label>
+            <input class="standart" id="employee_category" type="number" name="employee_category" required>
+            <select id="employee_category" name="employee_category" required>
+                <option value="1">Категория 1</option>
+                <option value="2">Категория 2</option>
+                <option value="3">Категория 3</option>
+                <!-- Другие существующие категории -->
+                <option value="other">Другая категория</option>
+            </select>
+    
+            <label for="note">Примечание:</label>
+            <input class="standart" type="text" id="note" name="note" maxlength="150"><br>
+
+        <input type="submit" value="Отправить" onclick="submitForm('login')">
+    </div>
+
+    <h2>Форма поиска </h2>
+    <div class="form-container" id="search-form">
+        <label for="search">Поиск:</label>
+        <input type="text" id="search" name="search">
+        <input type="submit" value="Найти" onclick="submitForm('search')">
+    </div>
+
+    <script>
+        window.onload = function() {
+            var caseNumberInput = document.getElementById('case_number');
+            var inventoryNumberInput = document.getElementById('inventory_number');
+
+            var currentCaseNumber = 1;
+            var currentInventoryNumber = 1;
+
+            caseNumberInput.value = currentCaseNumber;
+            inventoryNumberInput.value = currentInventoryNumber;
+
+            caseNumberInput.addEventListener('change', function() {
+                if (caseNumberInput.value < 1) {
+                    caseNumberInput.value = 1;
+                }
+                if (caseNumberInput.value > 999) {
+                    caseNumberInput.value = 999;
+                }
+                currentCaseNumber = parseInt(caseNumberInput.value);
+            });
+
+            inventoryNumberInput.addEventListener('change', function() {
+                if (inventoryNumberInput.value < 1) {
+                    inventoryNumberInput.value = 1;
+                }
+                if (inventoryNumberInput.value > 999) {
+                    inventoryNumberInput.value = 999;
+                }
+                currentInventoryNumber = parseInt(inventoryNumberInput.value);
+            });
+        };
+
+        function submitForm(formName) {
+            if (formName === 'login') {
+                // Ваш JavaScript код для обработки формы ввода
+                alert('Форма ввода отправлена');
+            } else if (formName === 'search') {
+                // Ваш JavaScript код для обработки формы поиска
+                alert('Форма поиска отправлена');
+            }
+        }
+    </script>
+</body>
+</html>
