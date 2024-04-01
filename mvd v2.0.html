@@ -42,7 +42,7 @@
 </head>
 <body>
     <h2>Форма ввода</h2>
-    <div class="form-container" id="login-form">
+    <form class="form-container" id="login-form">
         <label for="fund_number">Номер фонда:</label>
             <input class="standart" id="fund_number" type="number" name="fund_number" value="30" required><br>
 
@@ -89,23 +89,23 @@
             <label for="note">Примечание:</label>
             <input class="standart" type="text" id="note" name="note" maxlength="150"><br>
 
-        <input type="submit" value="Отправить" onclick="submitForm('login')">
-    </div>
+        <input type="submit" value="Отправить">
+        </form>
 
     <h2>Форма поиска </h2>
-    <div class="form-container" id="search-form">
+    <form class="form-container" id="search-form">
         <label for="search">Поиск:</label>
         <input type="text" id="search" name="search">
-        <input type="submit" value="Найти" onclick="submitForm('search')">
-    </div>
+        <input type="submit" value="Найти">
+    </form>
 
     <script>
         window.onload = function() {
             var caseNumberInput = document.getElementById('case_number');
             var inventoryNumberInput = document.getElementById('inventory_number');
 
-            var currentCaseNumber = 1;
-            var currentInventoryNumber = 1;
+            var currentCaseNumber = 1;      //здесь надо будет номер брать из базы данных, сейчас просто первый номер
+            var currentInventoryNumber = 1; // здесь тоже
 
             caseNumberInput.value = currentCaseNumber;
             inventoryNumberInput.value = currentInventoryNumber;
@@ -131,15 +131,16 @@
             });
         };
 
-        function submitForm(formName) {
-            if (formName === 'login') {
-                // Ваш JavaScript код для обработки формы ввода
-                alert('Форма ввода отправлена');
-            } else if (formName === 'search') {
-                // Ваш JavaScript код для обработки формы поиска
-                alert('Форма поиска отправлена');
-            }
+        function handleFormSubmit(event) {
+            // Просим форму не отправлять данные самостоятельно
+            //эта функция нужна для того, чтобы форма при отправке не обновляла страничку
+            event.preventDefault()
+            console.log('Отправка!')
         }
+        const loginForm = document.getElementById('login-form')
+        const searchForm = document.getElementById('search-form')
+        loginForm.addEventListener('submit', handleFormSubmit)
+        searchForm.addEventListener('submit', handleFormSubmit)
     </script>
 </body>
 </html>
